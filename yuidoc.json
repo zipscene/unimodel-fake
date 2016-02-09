@@ -1,0 +1,8 @@
+{
+	"name": "zs-unimodel-fake",
+	"description": "Fake in-memory model for testing zs-unimodel",
+	"options": {
+		"outdir": "./docs",
+		"exclude": "dist,tmp,test,node_modules"
+	}
+}

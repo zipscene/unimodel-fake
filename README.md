@@ -7,6 +7,8 @@ as such, takes a schema.
 Here's how it's used:
 
 ```js
+const FakeModel = require('zs-unimodel-fake').FakeModel;
+
 const Animal = new FakeModel('Animal', {
 	id: {
 		type: String,

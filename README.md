@@ -42,8 +42,10 @@ Animal.find({ age: { $gt: 6 } }).then((results) => {
 	let name = results[0].getData().name;
 	// name is 'Ruff'
 });
+
+Animal.clear(); // Clears out all inserted data
 ```
 
-All unimodel operations are supported except aggregations.  The standard arguments to `find()` are
+All unimodel operations are supported.  The standard arguments to `find()` are
 also supported (`sort`, `fields`, `skip`, `limit`).
 

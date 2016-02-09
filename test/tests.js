@@ -156,5 +156,115 @@ describe('Fake Model', function() {
 			});
 	});
 
+	it('should aggregate global stats', function() {
+		return insertFakeData()
+			.then(() => Animal.aggregate({}, {
+				stats: {
+					age: {
+						avg: true,
+						max: true
+					}
+				},
+				total: true
+			}))
+			.then((result) => {
+				expect(result).to.deep.equal({
+					stats: {
+						age: {
+							avg: 3.8333333333333335,
+							max: 8
+						}
+					},
+					total: 6
+				});
+			});
+	});
+
+	it('should aggregate discrete grouped stats', function() {
+		return insertFakeData()
+			.then(() => Animal.aggregate({}, {
+				groupBy: 'animalType',
+				stats: {
+					age: {
+						count: true
+					}
+				}
+			}))
+			.then((result) => {
+				expect(result).to.deep.equal([
+					{
+						key: [ 'cat' ],
+						stats: {
+							age: {
+								count: 2
+							}
+						}
+					},
+					{
+						key: [ 'dog' ],
+						stats: {
+							age: {
+								count: 1
+							}
+						}
+					},
+					{
+						key: [ 'horse' ],
+						stats: {
+							age: {
+								count: 2
+							}
+						}
+					},
+					{
+						key: [ 'frog' ],
+						stats: {
+							age: {
+								count: 1
+							}
+						}
+					}
+				]);
+			});
+	});
+
+	it('should aggregate grouped by range', function() {
+		return insertFakeData()
+			.then(() => Animal.aggregate({}, {
+				groupBy: {
+					field: 'age',
+					ranges: [
+						{ end: 4 },
+						{ start: 4 }
+					]
+				},
+				stats: {
+					age: {
+						count: true
+					}
+				}
+			}))
+			.then((result) => {
+				expect(result).to.deep.equal([
+					{
+						key: [ 1 ],
+						stats: {
+							age: {
+								count: 3
+							}
+						}
+					},
+					{
+						key: [ 0 ],
+						stats: {
+							age: {
+								count: 3
+							}
+						}
+					}
+				]);
+			});
+	});
+
 });
 

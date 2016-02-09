@@ -1,6 +1,6 @@
 {
   "name": "zs-unimodel-fake",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Fake in-memory model for testing zs-unimodel",
   "main": "./dist/lib/index.js",
   "repository": {

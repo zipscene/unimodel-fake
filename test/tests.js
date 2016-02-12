@@ -63,6 +63,13 @@ describe('Fake Model', function() {
 		Animal.clear();
 	});
 
+	it('should insert documents', function() {
+		return Animal.insert({ id: 'foo', name: 'Felix' })
+			.then((doc) => {
+				expect(doc.getData().name).to.equal('Felix');
+			});
+	});
+
 	it('should allow inserting and querying documents', function() {
 		return insertFakeData()
 			.then(() => Animal.find({
@@ -263,6 +270,15 @@ describe('Fake Model', function() {
 						}
 					}
 				]);
+			});
+	});
+
+	it('should upsert documents', function() {
+		return insertFakeData()
+			.then(() => Animal.upsert({ id: 'asdf' }, { name: 'FOOBAR' }))
+			.then((doc) => {
+				expect(doc.data.id).to.equal('asdf');
+				expect(doc.data.name).to.equal('FOOBAR');
 			});
 	});
 

@@ -21,7 +21,7 @@
     "xerror": "^1.1.1",
     "zs-common-query": "^1.9.0",
     "zs-objtools": "^1.4.0",
-    "zs-unimodel": "^0.5.25",
+    "zs-unimodel": "^0.6.0",
     "zstreams": "^3.2.2"
   },
   "devDependencies": {

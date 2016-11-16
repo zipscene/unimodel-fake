@@ -1,13 +1,13 @@
 # Unimodel-Fake: In-Memory Test Database
 
 This package provides two classes: `FakeModel` and `FakeDocument`.  They implement a very basic
-in-memory database conforming to zs-unimodel specifications.  `FakeModel` is a `SchemaModel`, and
+in-memory database conforming to unimodel-core specifications.  `FakeModel` is a `SchemaModel`, and
 as such, takes a schema.
 
 Here's how it's used:
 
 ```js
-const FakeModel = require('zs-unimodel-fake').FakeModel;
+const FakeModel = require('unimodel-fake').FakeModel;
 
 const Animal = new FakeModel('Animal', {
 	id: {
